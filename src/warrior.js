@@ -5,9 +5,8 @@ import {
   CONSTANT_MAX_DAMAGE,
 } from "./constants.js";
 
-// const WarriorModule = (() => {
   export default class Warrior {
-  // class Warrior {
+
     constructor(name, attack, defense) {
       this._name = name;
       this._lives = CONSTANT_LIVES;
@@ -44,7 +43,7 @@ import {
     }
 
     isLive() {
-      return this._lives > 1;
+      return this._lives > 0;
     }
 
     checkTimeToBerserk() {
@@ -57,12 +56,7 @@ import {
         this._isBerserkerDone = true;
       }
     }
-
-    // The amount of damage is increased by a random number which represents dice roll
-    incAttack(val) {
-      this._attack += val;
-    }
-
+    
     doAttack(defender) {
       const currentAttackDamage = randomInteger(
         CONSTANT_MIN_DAMAGE,
@@ -71,7 +65,6 @@ import {
 
       defender._currentAttackDamage = currentAttackDamage + this._attack; //comment to console
       defender.receiveDamage(currentAttackDamage + this._attack);
-      //this.incAttack(currentAttackDamage);
     }
 
     renderInfo() {
@@ -83,9 +76,4 @@ import {
       );
     }
   }
-//   return {
-//     Warrior,
-//   };
-// })();
 
-// export default WarriorModule;
